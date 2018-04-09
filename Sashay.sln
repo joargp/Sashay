@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sashay.Core.Oas", "src\Sashay.Core.Oas\Sashay.Core.Oas.csproj", "{08DC0034-3EEC-4645-9D26-CB0E76F7009C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sashay.Core.OasGen", "src\Sashay.Core.OasGen\Sashay.Core.OasGen.csproj", "{95856CFE-D4AA-4D57-BE5B-1CDB02CBF8E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EDA80B94-CB36-44CD-85B3-AC88A9A9CE7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6E3009D8-AC81-4420-8600-1FA3C86F60B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B7DBF0B9-CC9B-4527-9A40-DCDC4D528F71}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		LICENSE = LICENSE
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08DC0034-3EEC-4645-9D26-CB0E76F7009C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08DC0034-3EEC-4645-9D26-CB0E76F7009C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08DC0034-3EEC-4645-9D26-CB0E76F7009C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08DC0034-3EEC-4645-9D26-CB0E76F7009C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95856CFE-D4AA-4D57-BE5B-1CDB02CBF8E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95856CFE-D4AA-4D57-BE5B-1CDB02CBF8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95856CFE-D4AA-4D57-BE5B-1CDB02CBF8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95856CFE-D4AA-4D57-BE5B-1CDB02CBF8E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{08DC0034-3EEC-4645-9D26-CB0E76F7009C} = {EDA80B94-CB36-44CD-85B3-AC88A9A9CE7B}
+		{95856CFE-D4AA-4D57-BE5B-1CDB02CBF8E9} = {EDA80B94-CB36-44CD-85B3-AC88A9A9CE7B}
+	EndGlobalSection
+EndGlobal
