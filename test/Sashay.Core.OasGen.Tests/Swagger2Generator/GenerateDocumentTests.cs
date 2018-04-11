@@ -1,13 +1,13 @@
 ﻿using Xunit;
 
-namespace Sashay.Core.OasGen.Tests
+namespace Sashay.Core.OasGen.Tests.Swagger2Generator
 {
-    public class Swagger2GeneratorTests
+    public class GenerateDocumentTests
     {
         [Fact]
-        public void Generate_SetsSwaggerDefaults()
+        public void SetsSwaggerDefaults()
         {
-            var swagger = Swagger2Generator.GenerateDocument();
+            var swagger = OasGen.Swagger2Generator.GenerateDocument();
             
             Assert.Equal(swagger.Swagger, "2.0");
             Assert.Equal(swagger.Info.Description, "Sample Description");
@@ -17,40 +17,39 @@ namespace Sashay.Core.OasGen.Tests
         }
 
         [Fact]
-        public void Generate_SetsTitleToCallingAssemblyName()
+        public void SetsTitleToCallingAssemblyName()
         {
-            var swagger = Swagger2Generator.GenerateDocument();
+            var swagger = OasGen.Swagger2Generator.GenerateDocument();
             
             Assert.Equal(swagger.Info.Title, "Sashay.Core.OasGen.Tests");
-            
         }
 
         [Fact]
-        public void Generate_WithDescription_SetsSwaggerDescription()
+        public void WithDescription_SetsSwaggerDescription()
         {
             const string description = "Some random description";
             
-            var swagger = Swagger2Generator.GenerateDocument(description: description);
+            var swagger = OasGen.Swagger2Generator.GenerateDocument(description: description);
             
             Assert.Equal(swagger.Info.Description, description);
         }
 
         [Fact]
-        public void Generate_WithHost_SetsSwaggerHost()
+        public void WithHost_SetsSwaggerHost()
         {
             const string host = "gitsnub.com";
             
-            var swagger = Swagger2Generator.GenerateDocument(host: host);
+            var swagger = OasGen.Swagger2Generator.GenerateDocument(host: host);
             
             Assert.Equal(swagger.Host, host);
         }
 
         [Fact]
-        public void Generate_WithBasePath_SetsSwaggerBasePath()
+        public void WithBasePath_SetsSwaggerBasePath()
         {
             const string basePath = "api/";
 
-            var swagger = Swagger2Generator.GenerateDocument(basePath: basePath);
+            var swagger = OasGen.Swagger2Generator.GenerateDocument(basePath: basePath);
 
             Assert.Equal(swagger.BasePath, basePath);
         }
