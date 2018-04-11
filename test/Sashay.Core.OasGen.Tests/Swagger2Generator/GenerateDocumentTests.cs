@@ -13,7 +13,7 @@ namespace Sashay.Core.OasGen.Tests.Swagger2Generator
             Assert.Equal(swagger.Info.Description, "Sample Description");
             Assert.Equal(swagger.Info.Version, "1.0.0");
             Assert.Equal(swagger.Host, "localhost");
-            Assert.Equal(swagger.BasePath, "/");
+            Assert.Equal(swagger.BasePath, "/api");
         }
 
         [Fact]
