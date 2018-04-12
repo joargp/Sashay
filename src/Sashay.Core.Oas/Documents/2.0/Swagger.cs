@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
+using System.Linq;
 using Sashay.Core.Oas.Schema._2._0;
 
 namespace Sashay.Core.Oas.Documents._2._0
@@ -8,10 +10,12 @@ namespace Sashay.Core.Oas.Documents._2._0
     public class Swagger2
     {
         private readonly List<string> schemes;
+        private readonly List<Path> paths;
         
         public Swagger2()
         {
             schemes = new List<string>();
+            paths = new List<Path>();
         }
 
         public string Swagger => "2.0";
@@ -27,6 +31,13 @@ namespace Sashay.Core.Oas.Documents._2._0
         public void AddScheme(string scheme)
         {
             schemes.Add(scheme.ToLowerInvariant());
+        }
+
+        public IReadOnlyDictionary<string, Path> Paths => paths.ToDictionary(path => path.Route, el => el);
+
+        public void AddPath(Path path)
+        {
+            paths.Add(path);
         }
     }
 }

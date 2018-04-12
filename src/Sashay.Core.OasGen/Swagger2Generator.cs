@@ -16,10 +16,11 @@ namespace Sashay.Core.OasGen
 
             if (context != null)
             {
+                //TODO: Throw some testing in around path formats for / \ locations
                 var hostConfig = context.GetHostConfiguration();
                 basePath = string.IsNullOrEmpty(hostConfig.Http.RoutePrefix)
                     ? basePath
-                    : $"\\{hostConfig.Http.RoutePrefix}";
+                    : $"/{hostConfig.Http.RoutePrefix}";
 
                 return new Swagger2
                 {

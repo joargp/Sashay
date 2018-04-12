@@ -1,5 +1,6 @@
 using System.Linq;
 using Sashay.Core.Oas.Documents._2._0;
+using Sashay.Core.Oas.Schema._2._0;
 using Xunit;
 
 namespace Sashay.Core.Oas.Tests.Documents._2._0
@@ -20,6 +21,19 @@ namespace Sashay.Core.Oas.Tests.Documents._2._0
 
             Assert.Equal(1, swagger.Schemes.Count());
             Assert.Contains(expected, swagger.Schemes);
+        }
+
+        [Theory]
+        [InlineData("pet/", "/pet")]
+        [InlineData("user/", "/user")]
+        [InlineData("/store/order/", "/store/order")]
+        public void AddPath_WithNewDocument_AddsPathWithRouteAsKey(string route, string expectedKey)
+        {
+            var swagger = new Swagger2();
+            
+            swagger.AddPath(new Path(route));
+            
+            Assert.Contains(expectedKey, swagger.Paths.Keys);
         }
     }
 }
