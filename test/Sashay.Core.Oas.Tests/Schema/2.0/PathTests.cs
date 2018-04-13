@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using Sashay.Core.Oas.Extensions;
+using Sashay.Core.Oas.Schema.Exceptions;
 using Sashay.Core.Oas.Schema._2._0;
 using Xunit;
 
@@ -31,6 +33,27 @@ namespace Sashay.Core.Oas.Tests.Schema._2._0
             Assert.Equal(expectedRoute, path.Route);
         }
 
-     
+        [Fact]
+        public void AddOperation_WithNewOperation_AddsOperationDetailsToPath()
+        {
+            var path = new Path("/users");
+            var operation = new Operation("get");
+            
+            path.AddOperation(operation);
+            
+            Assert.Contains("get", path.Operations.Keys);
+        }
+
+        [Fact]
+        public void AddOperation_WithAlreadyStoredHttpMethod_Throws()
+        {
+            var path = new Path("/users");
+            var getOperation = new Operation("get");
+            path.AddOperation(getOperation);
+            var secondGetOperation = new Operation("get");
+
+
+            Assert.Throws<DuplicateOperationExeception>(() => path.AddOperation(secondGetOperation));
+        }
     }
 }
