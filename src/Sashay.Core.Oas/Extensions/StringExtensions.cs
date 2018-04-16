@@ -12,7 +12,7 @@
                 path = $"/{path}";
             }
             
-            return path;
+            return path.ToLower();
         }
     }
 }

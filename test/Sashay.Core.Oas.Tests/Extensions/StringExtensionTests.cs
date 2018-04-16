@@ -10,7 +10,8 @@ namespace Sashay.Core.Oas.Tests.Extensions
         [InlineData("api", "/api")]
         [InlineData("api/", "/api")]
         [InlineData("/api/", "/api")]
-        public void ToPath_AddsLeadingWhack_AndRemovesTrailingWhack(string pathIn, string expectedPath)
+        [InlineData("/CAPITAL/", "/capital")]
+        public void ToPath_AddsLeadingWhack_AndRemovesTrailingWhack_AndConvertsToLowerCase(string pathIn, string expectedPath)
         {
             var path = pathIn.AsPath();
             
