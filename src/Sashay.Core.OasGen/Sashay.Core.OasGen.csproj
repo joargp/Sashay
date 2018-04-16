@@ -12,4 +12,9 @@
     <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.0-beta5" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.0-beta5" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.WebJobs.Extensions.Http, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.azure.webjobs.extensions.http\3.0.0-beta5\lib\netstandard2.0\Microsoft.Azure.WebJobs.Extensions.Http.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

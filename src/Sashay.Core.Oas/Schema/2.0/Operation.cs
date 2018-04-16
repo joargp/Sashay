@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Sashay.Core.Oas.Schema._2._0
 {
@@ -11,6 +12,7 @@ namespace Sashay.Core.Oas.Schema._2._0
             HttpMethod = httpMethod;
         }
         
+        [JsonIgnore]
         public string HttpMethod { get; }
     }
 }

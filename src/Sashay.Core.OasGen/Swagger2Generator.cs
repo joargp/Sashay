@@ -1,6 +1,9 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Data.OData.Query.SemanticAst;
 using Sashay.Core.Oas.Documents._2._0;
 using Sashay.Core.Oas.Schema._2._0;
 using Sashay.Core.OasGen.AzureFunctions.Extensions;
@@ -38,13 +41,23 @@ namespace Sashay.Core.OasGen
             };
         }
 
-        public static Swagger2 GenerateFromRequestMessage(HttpRequestMessage message, ExecutionContext context = null)
+        public static Swagger2 GenerateFromRequestMessage(HttpRequestMessage message, 
+            ExecutionContext context = null, TraceWriter logger = null)
         {
-            var title = Assembly.GetCallingAssembly().GetName().Name;
+            var assembly = Assembly.GetCallingAssembly();
+            
+            
+            var title = assembly.GetName().Name;
             
             var swagger = GenerateDocument(host: message.RequestUri.Authority, title:title, context: context);
             
             swagger.AddScheme(message.RequestUri.Scheme);
+
+            var paths = new PathFinder().FindPaths(assembly);
+            foreach (var path in paths)
+            {
+                swagger.AddPath(path);
+            }
 
             return swagger;
         }

@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Sashay.Core.OasGen.Tests.AzureFunctions.ExecutionContextExtensionsTests
 {
-    public class GetHostConfigurationTests
+    public class GetHostConfiguration
     {
         [Fact]
         public void WithNullContext_ReturnsEmptyConfiguration()

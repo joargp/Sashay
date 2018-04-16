@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Json;
+using Newtonsoft.Json;
 using Sashay.Core.Oas.Extensions;
 using Sashay.Core.Oas.Schema.Exceptions;
 
@@ -22,6 +24,7 @@ namespace Sashay.Core.Oas.Schema._2._0
             operations = new List<Operation>();
         }
 
+        [JsonIgnore]
         public string Route { get; }
         
         public IReadOnlyDictionary<string, Operation> Operations => operations.ToDictionary(op => op.HttpMethod, el => el);

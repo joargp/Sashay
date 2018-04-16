@@ -12,7 +12,7 @@ namespace Sashay.Core.Oas.Tests.Documents._2._0
         [InlineData("Https", "https")]
         [InlineData("BaNaNA", "banana")]
         [InlineData("1scheme", "1scheme")]
-        [InlineData("1SCHEME", "1scheme")]
+        [InlineData("SCHEME1", "scheme1")]
         public void AddScheme_ConvertsSchemeToLowerCase(string scheme, string expected)
         {        
             var swagger = new Swagger2();

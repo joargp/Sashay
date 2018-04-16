@@ -14,5 +14,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Sashay.Core.OasGen\Sashay.Core.OasGen.csproj" />
     <ProjectReference Include="..\..\src\Sashay.Core.Oas\Sashay.Core.Oas.csproj" />
+    <ProjectReference Include="..\Sashay.Core.FakeFunctions\Sashay.Core.FakeFunctions.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AzureFunctions\MethodInfoExtensions" />
   </ItemGroup>
 </Project>
