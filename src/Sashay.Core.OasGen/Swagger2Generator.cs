@@ -46,14 +46,13 @@ namespace Sashay.Core.OasGen
         {
             var assembly = Assembly.GetCallingAssembly();
             
-            
             var title = assembly.GetName().Name;
             
             var swagger = GenerateDocument(host: message.RequestUri.Authority, title:title, context: context);
             
             swagger.AddScheme(message.RequestUri.Scheme);
 
-            var paths = new PathFinder().FindPaths(assembly);
+            var paths = new PathFinder(context.FunctionName).FindPaths(assembly);
             foreach (var path in paths)
             {
                 swagger.AddPath(path);
