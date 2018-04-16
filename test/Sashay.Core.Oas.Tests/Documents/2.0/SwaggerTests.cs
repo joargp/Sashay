@@ -19,7 +19,7 @@ namespace Sashay.Core.Oas.Tests.Documents._2._0
             
             swagger.AddScheme(scheme);
 
-            Assert.Equal(1, swagger.Schemes.Count());
+            Assert.Single(swagger.Schemes);
             Assert.Contains(expected, swagger.Schemes);
         }
 
