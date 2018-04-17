@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using NSubstitute;
+using Xunit;
 
 namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
 {
@@ -7,7 +8,8 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
         [Fact]
         public void WithNullGenerationFunctionName_UsesSwaggerAsGenerationName()
         {
-            var pathFinder = new PathFinder();
+            var operationParser = Substitute.For<IOperationParser>();
+            var pathFinder = new PathFinder(operationParser);
             
             Assert.Equal("Swagger", pathFinder.GenerationFunctionName);
         }
@@ -15,11 +17,12 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
         [Fact]
         public void WithSpecifiedGenerationFunction_StoresGenerationFunctionName()
         {
-            const string Generator = "OasGenerator";
+            var operationParser = Substitute.For<IOperationParser>();
+            const string generator = "OasGenerator";
             
-            var pathFinder = new PathFinder(Generator);
+            var pathFinder = new PathFinder(operationParser, generator);
             
-            Assert.Equal(Generator, pathFinder.GenerationFunctionName);
+            Assert.Equal(generator, pathFinder.GenerationFunctionName);
         }
     }
 }

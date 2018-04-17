@@ -1,4 +1,3 @@
-using System.Linq;
 using Sashay.Core.Oas.Documents._2._0;
 using Sashay.Core.Oas.Schema._2._0;
 using Xunit;

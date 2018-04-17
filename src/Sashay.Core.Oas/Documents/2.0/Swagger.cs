@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Sashay.Core.Oas.Schema._2._0;
 

@@ -11,11 +11,13 @@ namespace Sashay.Core.OasGen
 {
     public class PathFinder
     {
+        private readonly IOperationParser operationParser;
         public TraceWriter logger { get; set; }
 
 
-        public PathFinder(string generationFunctionName = null)
+        public PathFinder(IOperationParser operationParser, string generationFunctionName = null)
         {
+            this.operationParser = operationParser;
             GenerationFunctionName = generationFunctionName ?? "Swagger";
         }
 
@@ -46,7 +48,7 @@ namespace Sashay.Core.OasGen
 
                     foreach (var httpVerb in trigger.Methods)
                     {
-                        var operation = new Operation(httpVerb);
+                        var operation = operationParser.Parse(httpVerb, funcNameAttribute.Name);
                         path.AddOperation(operation);
                     }
 

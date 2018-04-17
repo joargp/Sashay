@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using Sashay.Core.Oas.Extensions;
-using Sashay.Core.Oas.Schema.Exceptions;
 using Sashay.Core.Oas.Schema._2._0;
 using Xunit;
 
@@ -53,7 +52,7 @@ namespace Sashay.Core.Oas.Tests.Schema._2._0
             var secondGetOperation = new Operation("get");
 
 
-            Assert.Throws<DuplicateOperationExeception>(() => path.AddOperation(secondGetOperation));
+            Assert.Throws<DuplicateOperationException>(() => path.AddOperation(secondGetOperation));
         }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Data.OData.Query.SemanticAst;
 using Sashay.Core.Oas.Documents._2._0;
 using Sashay.Core.Oas.Schema._2._0;
+using Sashay.Core.OasGen.AzureFunctions;
 using Sashay.Core.OasGen.AzureFunctions.Extensions;
 
 namespace Sashay.Core.OasGen
@@ -52,7 +53,7 @@ namespace Sashay.Core.OasGen
             
             swagger.AddScheme(message.RequestUri.Scheme);
 
-            var paths = new PathFinder(context?.FunctionName).FindPaths(assembly);
+            var paths = new PathFinder(new OperationParser(), context?.FunctionName).FindPaths(assembly);
             foreach (var path in paths)
             {
                 swagger.AddPath(path);

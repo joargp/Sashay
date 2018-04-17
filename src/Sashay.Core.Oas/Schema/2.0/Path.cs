@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization.Json;
 using Newtonsoft.Json;
 using Sashay.Core.Oas.Extensions;
-using Sashay.Core.Oas.Schema.Exceptions;
 
 namespace Sashay.Core.Oas.Schema._2._0
 {
     public class Path
     {
-        
-        
         private readonly List<Operation> operations;
         
         public Path(string route)
@@ -31,11 +27,13 @@ namespace Sashay.Core.Oas.Schema._2._0
 
         public void AddOperation(Operation operation)
         {
+            if (operation == null) return;
             if (operations.Any(op => op.HttpMethod.Equals(operation.HttpMethod)))
             {
-                throw new DuplicateOperationExeception(operation.HttpMethod);
+                throw new DuplicateOperationException(operation.HttpMethod);
             }
             operations.Add(operation);
+
         }
     }
 }
