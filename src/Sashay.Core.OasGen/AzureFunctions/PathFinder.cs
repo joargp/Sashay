@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Sashay.Core.Oas.Extensions;
 using Sashay.Core.Oas.Schema._2._0;
 using Sashay.Core.OasGen.AzureFunctions.Extensions;
+using System;
 
 namespace Sashay.Core.OasGen
 {
@@ -23,9 +25,15 @@ namespace Sashay.Core.OasGen
 
         public string GenerationFunctionName { get;  }
 
-        public IEnumerable<Path> FindPaths(Assembly assembly)
+        public IEnumerable<Path> FindPaths(Assembly assembly, string inNamespace = "")
         {
+            var namespaceFilter = string.IsNullOrEmpty(inNamespace)
+                ? (t => true)
+                : new Func<Type, bool>(t => t.Namespace.Equals(inNamespace));
+                
+            
             var functionMethods = assembly.GetTypes()
+                .Where(namespaceFilter)
                 .SelectMany(t => t.GetMethods())
                 .Where(m => m.GetCustomAttributes(typeof(FunctionNameAttribute), false).Any())
                 .ToArray();

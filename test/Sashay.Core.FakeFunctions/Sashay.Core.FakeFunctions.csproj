@@ -6,4 +6,10 @@
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.0-beta5" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="3.0.0-beta5" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Sashay.Core.OasGen\Sashay.Core.OasGen.csproj">
+      <Project>{95856CFE-D4AA-4D57-BE5B-1CDB02CBF8E9}</Project>
+      <Name>Sashay.Core.OasGen</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 using System.Reflection;
 using NSubstitute;
 using Sashay.Core.FakeFunctions;
+using Sashay.Core.FakeFunctions.NamespaceIncluded;
 using Xunit;
 
 namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
@@ -22,6 +23,21 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
             
             Assert.NotEmpty(paths);
             Assert.DoesNotContain(paths, p => p.Route.Equals(pathFinder.GenerationFunctionName));
+        }
+
+        [Fact]
+        public void WithSpecifiedNamespace_IncludesOnlyFunctionsFromNamespace()
+        {
+            var operationParser = Substitute.For<IOperationParser>();
+            var assembly = Assembly.GetAssembly(typeof(TestFunctions));
+            var pathFinder = new PathFinder(operationParser);
+
+            var paths = pathFinder.FindPaths(assembly, typeof(IncNamespaceFuncs).Namespace).ToList();
+            
+            Assert.NotEmpty(paths);
+            Assert.Contains(paths, p => p.Route.Equals("/included1"));
+            Assert.Contains(paths, p => p.Route.Equals("/included2"));
+            Assert.DoesNotContain(paths, p => !p.Route.StartsWith("/included"));
         }
     }
 }

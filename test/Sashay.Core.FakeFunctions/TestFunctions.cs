@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Net;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
+using Sashay.Core.OasGen.AzureFunctions.Attributes;
 
 namespace Sashay.Core.FakeFunctions
 {
@@ -16,7 +18,7 @@ namespace Sashay.Core.FakeFunctions
         }
         
         [FunctionName("AdditionalFunction")]
-        public static IActionResult Run2([HttpTrigger("get", "put", Route = null)]HttpRequest req, 
+        public static IActionResult Run2([HttpTrigger("get", "put", Route = "additional")]HttpRequest req, 
             TraceWriter log)
         {
             
