@@ -1,8 +1,11 @@
 ﻿using System.Linq;
 using System.Reflection;
 using NSubstitute;
+using NSubstitute.Core.Arguments;
 using Sashay.Core.FakeFunctions;
 using Sashay.Core.FakeFunctions.NamespaceIncluded;
+using Sashay.Core.Oas.Schema._2._0;
+using Sashay.Core.OasGen.AzureFunctions.Parsers;
 using Xunit;
 
 namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
@@ -15,9 +18,10 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
         [InlineData("OasGenerator")]
         public void ExcludesGenerationFunctionPath(string generationFunctionName)
         {
-            var operationParser = Substitute.For<IOperationParser>();
+            var operationParser = new OperationParser();
+            var responseParser = Substitute.For<IResponseParser>();
             var assembly = Assembly.GetAssembly(typeof(TestFunctions));
-            var pathFinder = new PathFinder(operationParser, generationFunctionName);
+            var pathFinder = new PathFinder(operationParser, responseParser, generationFunctionName);
 
             var paths = pathFinder.FindPaths(assembly).ToList();
             
@@ -28,9 +32,10 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
         [Fact]
         public void WithSpecifiedNamespace_IncludesOnlyFunctionsFromNamespace()
         {
-            var operationParser = Substitute.For<IOperationParser>();
+            var operationParser = new OperationParser();
+            var responseParser = Substitute.For<IResponseParser>();
             var assembly = Assembly.GetAssembly(typeof(TestFunctions));
-            var pathFinder = new PathFinder(operationParser);
+            var pathFinder = new PathFinder(operationParser, responseParser);
 
             var paths = pathFinder.FindPaths(assembly, typeof(IncNamespaceFuncs).Namespace).ToList();
             

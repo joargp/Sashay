@@ -16,5 +16,20 @@ namespace Sashay.Core.OasGen.AzureFunctions.Extensions
                 .Select(p => p.GetCustomAttribute<HttpTriggerAttribute>())
                 .SingleOrDefault();
         }
+
+        public static string GetFunctionName(this MethodInfo methodInfo)
+        {
+            if (methodInfo == null) throw new ArgumentNullException(nameof(methodInfo));
+
+            return methodInfo.GetCustomAttribute<FunctionNameAttribute>()?.Name;
+        }
+
+        public static bool IsAzureFunction(this MethodInfo methodInfo)
+        {
+            if (methodInfo == null) throw new ArgumentNullException(nameof(methodInfo));
+            
+            return methodInfo.GetCustomAttributes<FunctionNameAttribute>(false).Any();
+        }
+         
     }
 }

@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 using Sashay.Core.Oas.Extensions;
 
 namespace Sashay.Core.Oas.Schema._2._0
 {
-    public class Path
+    public class Path : IReadOnlyDictionary<string, Operation>
     {
-        private readonly List<Operation> operations;
+        private readonly Dictionary<string, Operation> operations;
         
         public Path(string route)
         {
@@ -17,23 +17,49 @@ namespace Sashay.Core.Oas.Schema._2._0
             
             Route = route.AsPath();
 
-            operations = new List<Operation>();
+            operations = new Dictionary<string, Operation>();
         }
 
         [JsonIgnore]
         public string Route { get; }
         
-        public IReadOnlyDictionary<string, Operation> Operations => operations.ToDictionary(op => op.HttpMethod, el => el);
-
+      
         public void AddOperation(Operation operation)
         {
             if (operation == null) return;
-            if (operations.Any(op => op.HttpMethod.Equals(operation.HttpMethod)))
+            if (operations.ContainsKey(operation.HttpMethod))
             {
                 throw new DuplicateOperationException(operation.HttpMethod);
             }
-            operations.Add(operation);
+            
+            operations.Add(operation.HttpMethod, operation);
 
         }
+
+        public IEnumerator<KeyValuePair<string, Operation>> GetEnumerator()
+        {
+            return operations.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public int Count => operations.Count;
+        public bool ContainsKey(string key)
+        {
+            return operations.ContainsKey(key);
+        }
+
+        public bool TryGetValue(string key, out Operation value)
+        {
+            return operations.TryGetValue(key, out value);
+        }
+
+        public Operation this[string key] => operations[key];
+
+        public IEnumerable<string> Keys => operations.Keys;
+        public IEnumerable<Operation> Values => operations.Values;
     }
 }

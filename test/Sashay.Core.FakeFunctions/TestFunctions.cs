@@ -1,9 +1,7 @@
-﻿using System.Net;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
-using Sashay.Core.OasGen.AzureFunctions.Attributes;
 
 namespace Sashay.Core.FakeFunctions
 {
@@ -33,6 +31,7 @@ namespace Sashay.Core.FakeFunctions
         }
         
         [FunctionName("Swagger")]
+       
         public static IActionResult SwaggerFunction([HttpTrigger("get", "put", Route = "metadata/swagger")]HttpRequest req)
         {
             

@@ -13,7 +13,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
     public class GetHttpTrigger
     {
         [Fact]
-        public void GetHttpTrigger_WithNullMethodInfo_ThrowsArgumentNullException()
+        public void WithNullMethodInfo_ThrowsArgumentNullException()
         {
             MethodInfo nullMethod = null;
             
@@ -21,7 +21,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
         }
         
         [Fact]
-        public void GetHttpTrigger_WithParameterlessMethod_ReturnsNull()
+        public void WithParameterlessMethod_ReturnsNull()
         {
             var methodInfo = GetType().GetMethod(nameof(ParameterlessMethod));
 
@@ -37,7 +37,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
         }
 
         [Fact]
-        public void GetHttpTrigger_WithParameteredMothod_WithoutTrigger_ReturnsNull()
+        public void WithParameteredMothod_WithoutTrigger_ReturnsNull()
         {
             var methodInfo = GetType().GetMethod(nameof(TriggerlessMethod));
             
@@ -53,7 +53,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
         }
 
         [Fact]
-        public void GetHttpTrigger_WithHttpTriggeredParameterInMethod_ReturnsHttpTrigger()
+        public void WithHttpTriggeredParameterInMethod_ReturnsHttpTrigger()
         {
             var methodInfo = GetType().GetMethod(nameof(TriggerMethod));
 

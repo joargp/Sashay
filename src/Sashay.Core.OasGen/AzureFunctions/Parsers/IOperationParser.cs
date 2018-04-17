@@ -1,6 +1,6 @@
 ﻿using Sashay.Core.Oas.Schema._2._0;
 
-namespace Sashay.Core.OasGen
+namespace Sashay.Core.OasGen.AzureFunctions.Parsers
 {
     public interface IOperationParser
     {

@@ -1,5 +1,5 @@
-﻿using System;
-using Sashay.Core.OasGen.AzureFunctions;
+﻿using Sashay.Core.OasGen.AzureFunctions;
+using Sashay.Core.OasGen.AzureFunctions.Parsers;
 using Xunit;
 
 namespace Sashay.Core.OasGen.Tests.AzureFunctions.OperationParserTests
@@ -20,7 +20,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.OperationParserTests
         }
         
         [Fact]
-        public void SetsOperationIdToConcatentationOfHttpVerbAndFuncrtionName()
+        public void SetsOperationIdToConcatentationOfHttpVerbAndFunctionName()
         {
             const string functionName = "Users";
             const string httpMethod = "post";

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace Sashay.Core.Oas.Schema._2._0
@@ -7,6 +8,7 @@ namespace Sashay.Core.Oas.Schema._2._0
     public class Operation
     {
         private List<string> outputFormats;
+        private List<Response> responses;
         
         public Operation(string httpMethod)
         {
@@ -15,6 +17,7 @@ namespace Sashay.Core.Oas.Schema._2._0
             HttpMethod = httpMethod;
             
             outputFormats = new List<string>();
+            responses = new List<Response>();
             
         }
         
@@ -24,6 +27,8 @@ namespace Sashay.Core.Oas.Schema._2._0
         public string OperationId { get; set; }
 
         public IEnumerable<string> Produces => outputFormats;
+        
+        public IReadOnlyDictionary<int, Response> Responses => responses.ToDictionary(r => r.HttpStatusCode, el => el);
 
         public void AddOutputFormat(string outputFormat)
         {
@@ -31,6 +36,11 @@ namespace Sashay.Core.Oas.Schema._2._0
             {
                 outputFormats.Add(outputFormat);
             }
+        }
+
+        public void AddResponses(IEnumerable<Response> responses)
+        {
+            this.responses.AddRange(responses);
         }
     }
 }

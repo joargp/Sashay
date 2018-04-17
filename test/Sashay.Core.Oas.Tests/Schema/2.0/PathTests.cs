@@ -40,7 +40,7 @@ namespace Sashay.Core.Oas.Tests.Schema._2._0
             
             path.AddOperation(operation);
             
-            Assert.Contains("get", path.Operations.Keys);
+            Assert.Contains("get", path.Keys);
         }
 
         [Fact]
