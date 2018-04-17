@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 
 
 namespace Sashay.Core.Oas.Schema._2._0
@@ -19,11 +18,9 @@ namespace Sashay.Core.Oas.Schema._2._0
         }
 
 
-        [Required]
         [DefaultValue(DefaultTitle)]
         public string Title { get; set; }
         
-        [Required]
         [DefaultValue(DefaultVersion)]
         public string Version { get; set; }
         
