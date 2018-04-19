@@ -1,12 +1,21 @@
+$VersionSuffix = "preview"
 # Set the target folder where all artifacts will be stored
 $ArtifactsPath = "$(pwd)" + "\artifacts"
 
+
+
 function release-build {
       dotnet clean -c Release
-      dotnet build -c Release
+      dotnet build -c Release --version-suffix $VersionSuffix
   }
 
-@( "release-build" ) | ForEach-Object {
+  function release-pack{
+    Get-ChildItem -Path src/** | ForEach-Object {
+      dotnet pack $_ -c Release --no-build -o $ArtifactsPath --version-suffix $VersionSuffix
+    }
+  }
+
+@( "release-build", "release-pack" ) | ForEach-Object {
     echo ""
     echo "***** $_ *****"
     echo ""

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\version.props" />
+  <Import Project="..\..\package.props" />
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Sashay.AzureFunctions</AssemblyName>
+    <RootNamespace>Sashay.AzureFunctions</RootNamespace>
+    <PackageId>Sashay.AzureFunctions</PackageId>
+    <Description>OpenApi/Swagger specification tools for documenting Azure Function based APIs using .NET Core</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Samples\Swagger2.cs" />
+  </ItemGroup>
+  <ItemGroup>
+  <ProjectReference Include="..\Sashay.Core.Oas\Sashay.Core.Oas.csproj" />
+  <ProjectReference Include="..\Sashay.Core.OasGen\Sashay.Core.OasGen.csproj" />
+  </ItemGroup>
+</Project>

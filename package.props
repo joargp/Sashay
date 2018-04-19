@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <PackageProjectUrl>https://github.com/Jtango18/Sashay</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Jtango18/Sashay/master/LICENSE</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>swagger;documentation;dotnetcore;azure;funcations;openapi</PackageTags>
+    <Authors>Justin Taylor</Authors>
+  </PropertyGroup>
+</Project>

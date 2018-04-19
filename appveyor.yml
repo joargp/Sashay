@@ -8,3 +8,6 @@ build_script:
 
 test_script:
 - ps: ci\test.ps1
+
+artifacts:
+- path: artifacts\*.nupkg
