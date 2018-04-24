@@ -5,6 +5,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>Tools for genearting API documentiation using OpenApi/Swagger specifications</Description>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sashay.Core.Oas\Sashay.Core.Oas.csproj" />
   </ItemGroup>

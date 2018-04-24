@@ -8,11 +8,17 @@
     <PackageId>Sashay.AzureFunctions</PackageId>
     <Description>OpenApi/Swagger specification tools for documenting Azure Function based APIs using .NET Core</Description>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
   <ItemGroup>
     <Content Include="Samples\Swagger2.cs" />
   </ItemGroup>
   <ItemGroup>
-  <ProjectReference Include="..\Sashay.Core.Oas\Sashay.Core.Oas.csproj" />
-  <ProjectReference Include="..\Sashay.Core.OasGen\Sashay.Core.OasGen.csproj" />
+    <ProjectReference Include="..\Sashay.Core.Oas\Sashay.Core.Oas.csproj" />
+    <ProjectReference Include="..\Sashay.Core.OasGen\Sashay.Core.OasGen.csproj" />
   </ItemGroup>
 </Project>
