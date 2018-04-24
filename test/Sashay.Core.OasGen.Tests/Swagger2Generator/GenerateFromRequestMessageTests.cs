@@ -13,7 +13,7 @@ namespace Sashay.Core.OasGen.Tests.Swagger2Generator
 
             var swagger = OasGen.Swagger2Generator.GenerateFromRequestMessage(message);
             
-            Assert.Equal(swagger.Info.Title, "Sashay.Core.OasGen.Tests");
+            Assert.Equal("Sashay.Core.OasGen.Tests", swagger.Info.Title);
         }
         
         [Fact]

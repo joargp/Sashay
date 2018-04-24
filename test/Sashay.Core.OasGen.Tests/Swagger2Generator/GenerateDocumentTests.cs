@@ -9,11 +9,11 @@ namespace Sashay.Core.OasGen.Tests.Swagger2Generator
         {
             var swagger = OasGen.Swagger2Generator.GenerateDocument();
             
-            Assert.Equal(swagger.Swagger, "2.0");
-            Assert.Equal(swagger.Info.Description, "Sample Description");
-            Assert.Equal(swagger.Info.Version, "1.0.0");
-            Assert.Equal(swagger.Host, "localhost");
-            Assert.Equal(swagger.BasePath, "/api");
+            Assert.Equal("2.0", swagger.Swagger);
+            Assert.Equal("Sample Description", swagger.Info.Description);
+            Assert.Equal("1.0.0", swagger.Info.Version);
+            Assert.Equal("localhost", swagger.Host);
+            Assert.Equal("/api", swagger.BasePath);
         }
 
         [Fact]
