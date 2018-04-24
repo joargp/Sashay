@@ -14,6 +14,7 @@ artifacts:
 
 deploy:
 - provider: NuGet
+  server: https://www.nuget.org/api/v2/package
   on:
     branch: master
     appveyor_repo_tag: true
@@ -29,4 +30,3 @@ deploy:
   on:
     branch: master
     appveyor_repo_tag: false
-  skip_symbols: true
