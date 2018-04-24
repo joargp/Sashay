@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Net.Http;
+﻿using System.Net.Http;
 using Xunit;
 
 namespace Sashay.Core.OasGen.Tests.Swagger2Generator

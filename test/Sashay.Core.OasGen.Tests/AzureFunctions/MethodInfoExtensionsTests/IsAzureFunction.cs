@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Microsoft.Azure.WebJobs;
 using Sashay.Core.OasGen.AzureFunctions.Extensions;
@@ -6,6 +7,9 @@ using Xunit;
 
 namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
 {
+    [SuppressMessage("ReSharper", "MemberCanBeMadeStatic.Global")]
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+    [SuppressMessage("ReSharper", "xUnit1013")]
     public class IsAzureFunction
     {
         [Fact]
@@ -24,8 +28,6 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
             Assert.False(methodInfo.IsAzureFunction());
         }
         
-        // ReSharper disable once MemberCanBePrivate.Global
-        // ReSharper disable once MemberCanBeMadeStatic.Global
         public void NoFunctionAttribute()
         {
             
@@ -39,8 +41,6 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
             Assert.True(methodInfo.IsAzureFunction());
         }
         
-        // ReSharper disable once MemberCanBePrivate.Global
-        // ReSharper disable once MemberCanBeMadeStatic.Global
         [FunctionName("xxx")]
         public void MyAzureFunction()
         {

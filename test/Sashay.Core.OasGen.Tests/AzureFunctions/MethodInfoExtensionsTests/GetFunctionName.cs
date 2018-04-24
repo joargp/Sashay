@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Microsoft.Azure.WebJobs;
 using Xunit;
@@ -6,6 +7,9 @@ using Sashay.Core.OasGen.AzureFunctions.Extensions;
 
 namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
 {
+    [SuppressMessage("ReSharper", "xUnit1013")]
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+    [SuppressMessage("ReSharper", "MemberCanBeMadeStatic.Global")]
     public class GetFunctionName
     {
         [Fact]
@@ -24,8 +28,6 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
             Assert.Null(methodInfo.GetFunctionName());
         }
 
-        // ReSharper disable once MemberCanBePrivate.Global
-        // ReSharper disable once MemberCanBeMadeStatic.Global
         public void NonFunctionMethod()
         {
             
@@ -39,8 +41,6 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
             Assert.Equal("MyAzureFunction", methodInfo.GetFunctionName());
         }
 
-        // ReSharper disable once MemberCanBePrivate.Global
-        // ReSharper disable once MemberCanBeMadeStatic.Global
         [FunctionName("MyAzureFunction")]
         public void AzureFunction()
         {

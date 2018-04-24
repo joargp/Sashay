@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Reflection;
 using Microsoft.AspNetCore.Http;
@@ -6,10 +7,13 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Sashay.Core.OasGen.AzureFunctions.Extensions;
 using Xunit;
-using MethodInfoExtensions = Sashay.Core.OasGen.AzureFunctions.Extensions.MethodInfoExtensions;
+
 
 namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
 {
+    [SuppressMessage("ReSharper", "xUnit1013")]
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+    [SuppressMessage("ReSharper", "UnusedParameter.Global")]
     public class GetHttpTrigger
     {
         [Fact]
@@ -17,7 +21,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
         {
             MethodInfo nullMethod = null;
             
-            Assert.Throws<ArgumentNullException>("methodInfo", () => MethodInfoExtensions.GetHttpTrigger(nullMethod));
+            Assert.Throws<ArgumentNullException>("methodInfo", () => nullMethod.GetHttpTrigger());
         }
         
         [Fact]
@@ -30,8 +34,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
             Assert.Null(trigger);
         }
 
-        // ReSharper disable once MemberCanBePrivate.Global
-        public void ParameterlessMethod()
+        public static void ParameterlessMethod()
         {
             
         }
@@ -46,8 +49,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
             Assert.Null(trigger);
         }
         
-        // ReSharper disable once MemberCanBePrivate.Global
-        public void TriggerlessMethod(HttpRequestMessage msg)
+        public static void TriggerlessMethod(HttpRequestMessage msg)
         {
             
         }
@@ -63,7 +65,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
             Assert.Equal("sample", trigger.Route);
         }
         
-        // ReSharper disable once MemberCanBePrivate.Global
+        
         public static void TriggerMethod([HttpTrigger("get", "post", Route = "sample")]HttpRequest req, TraceWriter log)
         {
             
