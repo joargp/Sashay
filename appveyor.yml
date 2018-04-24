@@ -16,6 +16,17 @@ deploy:
 - provider: NuGet
   on:
     branch: master
+    appveyor_repo_tag: true
   api_key:
     secure: QiGaAl+cZPz8jPPRGYRPX05Kj22BuEDTVo+YdPN4KVrGXmCxfIt9nYqgaHEKr8Rg
+  skip_symbols: true
+
+- provider: NuGet
+  server: https://www.myget.org/F/jtango18/api/v2/package
+  api_key:
+    secure: ryMXwjFvjCUTn/njfJoj2xwx+yzwO9hqV0O8YVPFVkDCfqB4DPb9fpWtgzNjlGrE
+  skip_symbols: true
+  on:
+    branch: master
+    appveyor_repo_tag: false
   skip_symbols: true
