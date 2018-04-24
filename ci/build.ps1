@@ -1,6 +1,9 @@
 $VersionSuffix = "preview"
+if ($env:APPVEYOR -eq "True"){
+  $VersionSuffix = $VersionSuffix + $env:APPVEYOR_BUILD_NUMBER.PadLeft(4, '0')
+}
 # Set the target folder where all artifacts will be stored
-$ArtifactsPath = "$(pwd)" + "\artifacts"
+$ArtifactsPath = "$(Get-Location)" + "\artifacts"
 
 
 
