@@ -46,7 +46,7 @@ namespace Sashay.Core.OasGen.Tests.Swagger2Generator
 
             var swagger = OasGen.Swagger2Generator.GenerateFromRequestMessage(message);
             
-            Assert.Equal(1, swagger.Schemes.Count());
+            Assert.Single(swagger.Schemes);
             Assert.Contains(expectedScheme, swagger.Schemes);
         }
     }

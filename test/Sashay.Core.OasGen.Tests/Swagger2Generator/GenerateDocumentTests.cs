@@ -21,7 +21,7 @@ namespace Sashay.Core.OasGen.Tests.Swagger2Generator
         {
             var swagger = OasGen.Swagger2Generator.GenerateDocument();
             
-            Assert.Equal(swagger.Info.Title, "Sashay.Core.OasGen.Tests");
+            Assert.Equal("Sashay.Core.OasGen.Tests", swagger.Info.Title);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace Sashay.Core.OasGen.Tests.Swagger2Generator
             
             var swagger = OasGen.Swagger2Generator.GenerateDocument(description: description);
             
-            Assert.Equal(swagger.Info.Description, description);
+            Assert.Equal(description, swagger.Info.Description);
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Sashay.Core.OasGen.Tests.Swagger2Generator
             
             var swagger = OasGen.Swagger2Generator.GenerateDocument(host: host);
             
-            Assert.Equal(swagger.Host, host);
+            Assert.Equal(host, swagger.Host);
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace Sashay.Core.OasGen.Tests.Swagger2Generator
 
             var swagger = OasGen.Swagger2Generator.GenerateDocument(basePath: basePath);
 
-            Assert.Equal(swagger.BasePath, basePath);
+            Assert.Equal(basePath, swagger.BasePath);
         }
 
     }
