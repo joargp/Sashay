@@ -1,5 +1,6 @@
 $VersionSuffix = "preview"
-if ($env:APPVEYOR -eq "True"){
+# Version suffix adds AppVeyopr build number on private feeds
+if ($env:APPVEYOR -eq "True" -and $env:APPVEYOR_REPO_TAG -eq "false"){
   $VersionSuffix = $VersionSuffix + $env:APPVEYOR_BUILD_NUMBER.PadLeft(4, '0')
 }
 # Set the target folder where all artifacts will be stored
