@@ -3,6 +3,13 @@ $VersionSuffix = ""
 if ($env:APPVEYOR -eq "True" -and $env:APPVEYOR_REPO_TAG -eq "false"){
   $VersionSuffix = "preview-" + $env:APPVEYOR_BUILD_NUMBER.PadLeft(4, '0')
 }
+else{
+  $TrailingDash = $env:APPVEYOR_REPO_TAG_NAME.IndexOf("-");
+  if($TrailingDash -gt 0){
+    $VersionSuffix = $env:APPVEYOR_REPO_TAG_NAME.SubString($TrailingDash)
+    }
+}
+
 # Set the target folder where all artifacts will be stored
 $ArtifactsPath = "$(Get-Location)" + "\artifacts"
 
@@ -31,9 +38,8 @@ function release-build {
     echo ""
     echo "***** $_ *****"
     echo ""
-  
+
     # Invoke function and exit on error
-    &$_ 
+    &$_
     if ($LastExitCode -ne 0) { Exit $LastExitCode }
   }
-  
