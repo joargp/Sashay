@@ -27,12 +27,12 @@ After the NuGet package is installed, a sample Function will appear under a Samp
 The Swagger 2 Generation function code is below:
 
 ```csharp
-        [FunctionName("Swagger2")]
-        public static IActionResult Run([HttpTrigger("get", Route = "swagger")] HttpRequestMessage msg,
-            TraceWriter log, ExecutionContext context)
-        {
-            return new OkObjectResult(Swagger2Generator.GenerateFromRequestMessage(msg, context, log));
-        }
+[FunctionName("Swagger2")]
+public static IActionResult Run([HttpTrigger("get", Route = "swagger")] HttpRequestMessage msg,
+  TraceWriter log, ExecutionContext context)
+{
+    return new OkObjectResult(Swagger2Generator.GenerateFromRequestMessage(msg, context, log));
+}
 ```
 
 This code can be copied in to a new Class within your Function Project, compiled and deployed.
@@ -48,16 +48,16 @@ To generate the minimum required Swagger 2.0, each Azure Function will need to i
 E.g.
 
 ```csharp
-    [FunctionName("UsersFunction")]
-    [ProducesResponse(HttpStatusCode.OK)]
-    public static IActionResult Run([HttpTrigger("get", "post", Route = "Users")]HttpRequest req,
-      TraceWriter log)
-    {
-      log.Info("C# HTTP trigger function processed a request.");
+[FunctionName("UsersFunction")]
+[ProducesResponse(HttpStatusCode.OK)]
+public static IActionResult Run([HttpTrigger("get", "post", Route = "Users")]HttpRequest req,
+  TraceWriter log)
+{
+    log.Info("C# HTTP trigger function processed a request.");
 
-      ...
+    ...
 
-    }
+}
 ```
 
 ## Generating Additional Information ##
