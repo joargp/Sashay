@@ -15,7 +15,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Samples\Swagger2.cs" />
+    <Content Include="Samples\SwaggerGeneration.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sashay.Core.Oas\Sashay.Core.Oas.csproj" />

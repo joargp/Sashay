@@ -11,7 +11,7 @@ namespace Sashay.AzureFunctions.Samples
 {
     public static class Swagger2
     {
-        [FunctionName("Swagger")]
+        [FunctionName("Swagger2")]
         public static IActionResult Run([HttpTrigger("get", Route = "swagger")] HttpRequestMessage msg, TraceWriter log, ExecutionContext context)
         {
             return new OkObjectResult(Swagger2Generator.GenerateFromRequestMessage(msg, context, log));
