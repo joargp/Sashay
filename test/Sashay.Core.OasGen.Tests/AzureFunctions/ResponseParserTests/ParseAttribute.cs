@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Sashay.Core.OasGen.Tests.AzureFunctions.ResponseParserTests
 {
-    public class Parse
+    public class ParseAttribute
     {
         [Fact]
         public void ReturnsResponseObjectWithHttpStatusCode()

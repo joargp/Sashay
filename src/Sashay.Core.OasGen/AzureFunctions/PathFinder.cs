@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
-using Sashay.Core.Oas.Extensions;
 using Sashay.Core.Oas.Schema._2._0;
 using Sashay.Core.OasGen.AzureFunctions.Extensions;
 using System;
@@ -52,11 +49,7 @@ namespace Sashay.Core.OasGen
                 var trigger = method.GetHttpTrigger();
                 if (trigger != null)
                 {
-
-                    var responses = method.GetCustomAttributes<ProducesResponseAttribute>()
-                        .Select(r => responseParser.Parse(r));
-         
-                    
+                    var responses = responseParser.Parse(method);
                     var path = new Path(trigger.GetRouteOrDefault());
 
 

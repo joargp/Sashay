@@ -44,5 +44,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
             Assert.Contains(paths, p => p.Route.Equals("/included2"));
             Assert.DoesNotContain(paths, p => !p.Route.StartsWith("/included"));
         }
+        
+
     }
 }

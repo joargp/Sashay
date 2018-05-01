@@ -31,5 +31,11 @@ namespace Sashay.Core.FakeFunctions.ResponseAttributes
         {
             return null;
         }
+
+        [FunctionName("NoResponse")]
+        public static IActionResult NoResponseAttribute([HttpTrigger("delete", Route = "user")]HttpRequest req)
+        {
+            return null;
+        }
     }
 }
