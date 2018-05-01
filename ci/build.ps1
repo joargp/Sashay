@@ -3,7 +3,7 @@ $VersionSuffix = ""
 if ($env:APPVEYOR -eq "True" -and $env:APPVEYOR_REPO_TAG -eq "false"){
   $VersionSuffix = "preview-" + $env:APPVEYOR_BUILD_NUMBER.PadLeft(4, '0')
 }
-else{
+elseif ($env:APPVEYOR_REPO_TAG_NAME -ne $null){
   $TrailingDash = $env:APPVEYOR_REPO_TAG_NAME.IndexOf("-");
   if($TrailingDash -gt 0){
     $VersionSuffix = $env:APPVEYOR_REPO_TAG_NAME.SubString(($TrailingDash+1))
