@@ -43,22 +43,20 @@ E.g.  `https://$YourFunctionApp$.azurewebsites.net/api/Swagger`
 
 Sashay also works locally with the [Azure Function Core Tools](https://github.com/Azure/azure-functions-core-tools).
 
-To generate the minimum required Swagger 2.0, each Azure Function will need to identify a response that it produces. At a minimum this requires the addition of the `ProducesResponseAttribute` to each Function endpoint.
+To generate the minimum required Swagger 2.0, each Azure Function needs to identify any Responses that it produces. The application of the `ProducesResponseAttribute` to each Function endpoint allows you to specify this.
 
 E.g.
 
 ```csharp
-[FunctionName("UsersFunction")]
-[ProducesResponse(HttpStatusCode.OK)]
-public static IActionResult Run([HttpTrigger("get", "post", Route = "Users")]HttpRequest req,
-  TraceWriter log)
+[FunctionName("CreateUser")]
+[ProducesResponse(HttpStatusCode.Created, Description = "Successfully created a user")]
+public static IActionResult PostUser([HttpTrigger("post", Route = "user")]HttpRequest req)
 {
-    log.Info("C# HTTP trigger function processed a request.");
-
-    ...
-
+    ...        
 }
 ```
+
+If a `ProducesResponseAttribute` is not provided, Sashay will provide a default HTTP response of "200 - 0k".
 
 ## Generating Additional Information ##
 
