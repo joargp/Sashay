@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 
 namespace Sashay.Core.OasGen.AzureFunctions.Extensions
 {
@@ -29,6 +33,15 @@ namespace Sashay.Core.OasGen.AzureFunctions.Extensions
             if (methodInfo == null) throw new ArgumentNullException(nameof(methodInfo));
             
             return methodInfo.GetCustomAttributes<FunctionNameAttribute>(false).Any();
+        }
+        
+        public static IEnumerable<ParameterInfo> GetFunctionParameters(this MethodInfo methodInfo)
+        {
+            if (methodInfo == null) throw new ArgumentNullException(nameof(methodInfo));
+
+            var excludedTypes = new[] {typeof(ILogger), typeof(TraceWriter), typeof(HttpRequestMessage)};
+
+            return methodInfo.GetParameters().Where(p => !excludedTypes.Contains(p.ParameterType));
         }
          
     }
