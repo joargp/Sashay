@@ -20,8 +20,9 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
         {
             var operationParser = new OperationParser();
             var responseParser = Substitute.For<IResponseParser>();
+            var parameterParser = Substitute.For<ParameterParser>();
             var assembly = Assembly.GetAssembly(typeof(TestFunctions));
-            var pathFinder = new PathFinder(operationParser, responseParser, generationFunctionName);
+            var pathFinder = new PathFinder(operationParser, responseParser, parameterParser, generationFunctionName);
 
             var paths = pathFinder.FindPaths(assembly).ToList();
             
@@ -34,8 +35,9 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.PathFinderTests
         {
             var operationParser = new OperationParser();
             var responseParser = Substitute.For<IResponseParser>();
+            var parameterParser = Substitute.For<ParameterParser>();
             var assembly = Assembly.GetAssembly(typeof(TestFunctions));
-            var pathFinder = new PathFinder(operationParser, responseParser);
+            var pathFinder = new PathFinder(operationParser, responseParser, parameterParser);
 
             var paths = pathFinder.FindPaths(assembly, typeof(IncNamespaceFuncs).Namespace).ToList();
             

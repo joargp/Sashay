@@ -9,6 +9,7 @@ namespace Sashay.Core.Oas.Schema._2._0
     {
         private List<string> outputFormats;
         private List<Response> responses;
+        private List<Parameter> parameters;
         
         public Operation(string httpMethod)
         {
@@ -18,6 +19,7 @@ namespace Sashay.Core.Oas.Schema._2._0
             
             outputFormats = new List<string>();
             responses = new List<Response>();
+            parameters = new List<Parameter>();
             
         }
         
@@ -27,6 +29,8 @@ namespace Sashay.Core.Oas.Schema._2._0
         public string OperationId { get; set; }
 
         public IEnumerable<string> Produces => outputFormats;
+
+        public IEnumerable<Parameter> Parameters => parameters;
         
         public IReadOnlyDictionary<int, Response> Responses => responses.ToDictionary(r => r.HttpStatusCode, el => el);
 
@@ -41,6 +45,11 @@ namespace Sashay.Core.Oas.Schema._2._0
         public void AddResponses(IEnumerable<Response> responses)
         {
             this.responses.AddRange(responses);
+        }
+
+        public void AddParamater(Parameter parameter)
+        {
+            parameters.Add(parameter);
         }
     }
 }

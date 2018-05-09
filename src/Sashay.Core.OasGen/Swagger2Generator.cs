@@ -52,7 +52,8 @@ namespace Sashay.Core.OasGen
             
             swagger.AddScheme(message.RequestUri.Scheme);
 
-            var paths = new PathFinder(new OperationParser(), new ResponseParser(), context?.FunctionName).FindPaths(assembly);
+            var paths = new PathFinder(new OperationParser(), new ResponseParser(), new ParameterParser(),
+                context?.FunctionName).FindPaths(assembly);
             foreach (var path in paths)
             {
                 swagger.AddPath(path);

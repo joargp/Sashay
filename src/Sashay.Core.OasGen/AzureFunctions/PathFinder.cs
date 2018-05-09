@@ -5,7 +5,6 @@ using Microsoft.Azure.WebJobs.Host;
 using Sashay.Core.Oas.Schema._2._0;
 using Sashay.Core.OasGen.AzureFunctions.Extensions;
 using System;
-using Sashay.Core.OasGen.AzureFunctions.Attributes;
 using Sashay.Core.OasGen.AzureFunctions.Parsers;
 
 namespace Sashay.Core.OasGen
@@ -14,14 +13,17 @@ namespace Sashay.Core.OasGen
     {
         private readonly IOperationParser operationParser;
         private readonly IResponseParser responseParser;
+        private readonly IParameterParser parameterParser;
         public TraceWriter logger { get; set; }
 
 
         public PathFinder(IOperationParser operationParser, IResponseParser responseParser, 
+            IParameterParser parameterParser,
             string generationFunctionName = null)
         {
             this.operationParser = operationParser;
             this.responseParser = responseParser;
+            this.parameterParser = parameterParser;
             GenerationFunctionName = generationFunctionName ?? "Swagger";
         }
 
@@ -52,6 +54,7 @@ namespace Sashay.Core.OasGen
                     var responses = responseParser.Parse(method);
                     var path = new Path(trigger.GetRouteOrDefault());
 
+                    //TODO: Process Parameters
 
                     foreach (var httpVerb in trigger.Methods)
                     {
