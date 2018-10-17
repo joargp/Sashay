@@ -5,6 +5,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 using Sashay.Core.OasGen.AzureFunctions.Extensions;
 using Xunit;
 
@@ -66,7 +67,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
         }
         
         
-        public static void TriggerMethod([HttpTrigger("get", "post", Route = "sample")]HttpRequest req, TraceWriter log)
+        public static void TriggerMethod([HttpTrigger("get", "post", Route = "sample")]HttpRequest req, ILogger log)
         {
             
         }

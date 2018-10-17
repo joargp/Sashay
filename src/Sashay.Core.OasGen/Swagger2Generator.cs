@@ -2,6 +2,7 @@
 using System.Reflection;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 using Sashay.Core.Oas.Documents._2._0;
 using Sashay.Core.Oas.Schema._2._0;
 using Sashay.Core.OasGen.AzureFunctions;
@@ -42,7 +43,7 @@ namespace Sashay.Core.OasGen
         }
 
         public static Swagger2 GenerateFromRequestMessage(HttpRequestMessage message, 
-            ExecutionContext context = null, TraceWriter logger = null)
+            ExecutionContext context = null, ILogger logger = null)
         {
             var assembly = Assembly.GetCallingAssembly();
             

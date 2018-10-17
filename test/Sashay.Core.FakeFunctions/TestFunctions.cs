@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 
 namespace Sashay.Core.FakeFunctions
 {
@@ -9,7 +10,7 @@ namespace Sashay.Core.FakeFunctions
     {
         [FunctionName("SampleFunction")]
         public static IActionResult Run([HttpTrigger("get", "post", Route = null)]HttpRequest req, 
-            TraceWriter log)
+            ILogger log)
         {
             
             return null;
@@ -17,7 +18,7 @@ namespace Sashay.Core.FakeFunctions
         
         [FunctionName("AdditionalFunction")]
         public static IActionResult Run2([HttpTrigger("get", "put", Route = "additional")]HttpRequest req, 
-            TraceWriter log)
+            ILogger log)
         {
             
             return null;

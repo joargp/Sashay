@@ -15,8 +15,8 @@
     <ProjectReference Include="..\Sashay.Core.Oas\Sashay.Core.Oas.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.0-beta5" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.0-beta5" />
-    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="3.0.0-beta5" />
+    <PackageReference Include="Microsoft.Azure.WebJobs" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="3.0.0" />
   </ItemGroup>
 </Project>

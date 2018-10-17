@@ -20,7 +20,6 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
 
         [Theory]
         [InlineData(typeof(HttpRequestMessage))]
-        [InlineData(typeof(TraceWriter))]
         [InlineData(typeof(ILogger))]
         public void ExcludesFunctionRuntimeSuppliedParameterTypes(Type excludedType)
         {
@@ -32,8 +31,7 @@ namespace Sashay.Core.OasGen.Tests.AzureFunctions.MethodInfoExtensionsTests
             Assert.DoesNotContain(parameters, p => p.ParameterType == excludedType);
         }
 
-        public void AzureRuntimeParametersMethod(HttpRequestMessage message, string someData, ILogger logger,
-            TraceWriter trace)
+        public void AzureRuntimeParametersMethod(HttpRequestMessage message, string someData, ILogger logger)
         {
             
         }

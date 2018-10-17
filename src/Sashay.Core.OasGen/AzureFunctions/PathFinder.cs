@@ -5,6 +5,7 @@ using Microsoft.Azure.WebJobs.Host;
 using Sashay.Core.Oas.Schema._2._0;
 using Sashay.Core.OasGen.AzureFunctions.Extensions;
 using System;
+using Microsoft.Extensions.Logging;
 using Sashay.Core.OasGen.AzureFunctions.Parsers;
 
 namespace Sashay.Core.OasGen
@@ -14,7 +15,7 @@ namespace Sashay.Core.OasGen
         private readonly IOperationParser operationParser;
         private readonly IResponseParser responseParser;
         private readonly IParameterParser parameterParser;
-        public TraceWriter logger { get; set; }
+        public ILogger logger { get; set; }
 
 
         public PathFinder(IOperationParser operationParser, IResponseParser responseParser, 

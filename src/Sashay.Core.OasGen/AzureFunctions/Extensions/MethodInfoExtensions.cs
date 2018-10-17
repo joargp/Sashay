@@ -39,7 +39,7 @@ namespace Sashay.Core.OasGen.AzureFunctions.Extensions
         {
             if (methodInfo == null) throw new ArgumentNullException(nameof(methodInfo));
 
-            var excludedTypes = new[] {typeof(ILogger), typeof(TraceWriter), typeof(HttpRequestMessage)};
+            var excludedTypes = new[] {typeof(ILogger), typeof(HttpRequestMessage)};
 
             return methodInfo.GetParameters().Where(p => !excludedTypes.Contains(p.ParameterType));
         }

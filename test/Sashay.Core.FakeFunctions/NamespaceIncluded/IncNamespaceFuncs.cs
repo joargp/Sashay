@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.Logging;
 
 namespace Sashay.Core.FakeFunctions.NamespaceIncluded
 {
@@ -9,7 +10,7 @@ namespace Sashay.Core.FakeFunctions.NamespaceIncluded
     {
         [FunctionName("IncludedFunction")]
         public static IActionResult Run([HttpTrigger("get", "post", Route = "Included1")]HttpRequest req, 
-            TraceWriter log)
+            ILogger log)
         {
             
             return null;
@@ -17,7 +18,7 @@ namespace Sashay.Core.FakeFunctions.NamespaceIncluded
         
         [FunctionName("IncludedFunction2")]
         public static IActionResult Run2([HttpTrigger("get", "put", Route = "Included2")]HttpRequest req, 
-            TraceWriter log)
+            ILogger log)
         {
             
             return null;

@@ -29,7 +29,7 @@ The Swagger 2 Generation function code is below:
 ```csharp
 [FunctionName("Swagger2")]
 public static IActionResult Run([HttpTrigger("get", Route = "swagger")] HttpRequestMessage msg,
-  TraceWriter log, ExecutionContext context)
+  ILogger log, ExecutionContext context)
 {
     return new OkObjectResult(Swagger2Generator.GenerateFromRequestMessage(msg, context, log));
 }
